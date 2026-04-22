@@ -180,7 +180,7 @@ geoBtn.addEventListener('click', () => {
       if (err.code === 2) message = 'Location unavailable. Please try again.';
       showError(message);
     },
-    { enableHighAccuracy: true, timeout: 10000 }
+    { enableHighAccuracy: true, timeout: 10000 },
   );
 });
 

@@ -3,14 +3,7 @@
    ============================================ */
 
 import { getWmoInfo } from './api.js';
-import {
-  formatTemp,
-  formatTime,
-  formatDateNow,
-  getDayName,
-  windDirection,
-  getWeatherIconUrl,
-} from './utils.js';
+import { formatTemp, formatTime, formatDateNow, getDayName, windDirection, getWeatherIconUrl } from './utils.js';
 
 /* --- DOM References --- */
 const $ = (sel) => document.querySelector(sel);
@@ -89,7 +82,8 @@ export function renderCurrentWeather(data, cityName, units) {
   $('#wind').textContent = `${current.wind_speed_10m} ${windUnit} ${windDirection(current.wind_direction_10m)}`;
   $('#pressure').textContent = `${Math.round(current.surface_pressure)} hPa`;
   // Visibility is not available in Open-Meteo free tier — show temp range instead
-  $('#visibility').textContent = `${formatTemp(daily.temperature_2m_min[0])}° / ${formatTemp(daily.temperature_2m_max[0])}°`;
+  $('#visibility').textContent =
+    `${formatTemp(daily.temperature_2m_min[0])}° / ${formatTemp(daily.temperature_2m_max[0])}°`;
   // Update label to "Temp Range"
   const visLabel = document.querySelector('#detail-visibility .detail-label');
   if (visLabel) visLabel.textContent = 'Temp Range';
@@ -160,7 +154,7 @@ export function renderSuggestions(cities, onSelect) {
       <span>${city.name}${city.state ? ', ' + city.state : ''}</span>
       <span class="country-code">${city.country || ''}</span>
     </div>
-  `
+  `,
     )
     .join('');
 

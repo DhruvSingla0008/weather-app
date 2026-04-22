@@ -11,7 +11,8 @@
 
 /* --- Float --- */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -67,7 +68,8 @@
 
 /* --- Pulse Glow --- */
 @keyframes pulseGlow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 15px var(--color-accent-glow);
   }
   50% {
@@ -131,7 +133,8 @@
 
 /* --- Sun Pulse --- */
 @keyframes sunPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     filter: brightness(1);
   }
@@ -143,10 +146,13 @@
 
 /* --- Lightning Flash --- */
 @keyframes lightningFlash {
-  0%, 90%, 100% {
+  0%,
+  90%,
+  100% {
     opacity: 0;
   }
-  92%, 96% {
+  92%,
+  96% {
     opacity: 0.8;
   }
   94% {
@@ -166,7 +172,8 @@
 
 /* --- Weather Icon Bounce --- */
 @keyframes iconBounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) scale(1);
   }
   30% {

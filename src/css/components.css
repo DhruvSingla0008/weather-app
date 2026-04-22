@@ -91,7 +91,9 @@
 }
 .search-bar:focus-within {
   background: var(--color-surface-hover);
-  box-shadow: var(--shadow-md), 0 0 0 3px var(--color-accent-glow);
+  box-shadow:
+    var(--shadow-md),
+    0 0 0 3px var(--color-accent-glow);
   border-color: var(--color-accent);
 }
 
