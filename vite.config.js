@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/weather-app/',
   root: './',
   publicDir: 'public',
   build: {
