@@ -1,0 +1,243 @@
+/* ============================================
+   SkyPulse — Design System & Global Styles
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  /* Typography */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.16);
+  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.15);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+
+  /* Glass */
+  --glass-blur: 20px;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* --- Light Theme --- */
+[data-theme='light'] {
+  --color-bg-start: #e0ecff;
+  --color-bg-end: #f8e8ff;
+  --color-surface: rgba(255, 255, 255, 0.55);
+  --color-surface-hover: rgba(255, 255, 255, 0.7);
+  --color-surface-solid: #ffffff;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #4a4a6a;
+  --color-text-tertiary: #7a7a9a;
+  --color-accent: #6366f1;
+  --color-accent-light: #a5b4fc;
+  --color-accent-glow: rgba(99, 102, 241, 0.25);
+  --color-border: rgba(255, 255, 255, 0.3);
+  --color-input-bg: rgba(255, 255, 255, 0.6);
+  --color-card-bg: rgba(255, 255, 255, 0.45);
+  --color-error-bg: rgba(239, 68, 68, 0.1);
+  --color-error: #dc2626;
+  --glass-bg: rgba(255, 255, 255, 0.35);
+}
+
+/* --- Dark Theme --- */
+[data-theme='dark'] {
+  --color-bg-start: #0f0f23;
+  --color-bg-end: #1a1a3e;
+  --color-surface: rgba(255, 255, 255, 0.06);
+  --color-surface-hover: rgba(255, 255, 255, 0.1);
+  --color-surface-solid: #1e1e3f;
+  --color-text-primary: #e8e8f0;
+  --color-text-secondary: #a0a0c0;
+  --color-text-tertiary: #6a6a8a;
+  --color-accent: #818cf8;
+  --color-accent-light: #6366f1;
+  --color-accent-glow: rgba(129, 140, 248, 0.3);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-input-bg: rgba(255, 255, 255, 0.05);
+  --color-card-bg: rgba(255, 255, 255, 0.04);
+  --color-error-bg: rgba(239, 68, 68, 0.15);
+  --color-error: #f87171;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Weather-Specific Theme Gradients --- */
+[data-weather='clear-day'] {
+  --color-bg-start: #fceabb;
+  --color-bg-end: #87ceeb;
+}
+[data-weather='clear-night'] {
+  --color-bg-start: #0f0c29;
+  --color-bg-end: #302b63;
+}
+[data-weather='clouds'] {
+  --color-bg-start: #bdc3c7;
+  --color-bg-end: #c4cdd4;
+}
+[data-weather='clouds-night'] {
+  --color-bg-start: #1a1a2e;
+  --color-bg-end: #2d2d44;
+}
+[data-weather='rain'],
+[data-weather='drizzle'] {
+  --color-bg-start: #4b6584;
+  --color-bg-end: #778ca3;
+}
+[data-weather='rain-night'],
+[data-weather='drizzle-night'] {
+  --color-bg-start: #141e30;
+  --color-bg-end: #243b55;
+}
+[data-weather='thunderstorm'] {
+  --color-bg-start: #373b44;
+  --color-bg-end: #4b5563;
+}
+[data-weather='snow'] {
+  --color-bg-start: #e6e9f0;
+  --color-bg-end: #eef1f5;
+}
+[data-weather='snow-night'] {
+  --color-bg-start: #1a1a2e;
+  --color-bg-end: #2a2a4a;
+}
+[data-weather='mist'],
+[data-weather='fog'],
+[data-weather='haze'] {
+  --color-bg-start: #c9d6df;
+  --color-bg-end: #e2e8f0;
+}
+
+/* --- Global Reset --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background var(--duration-slow) var(--ease-smooth);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+a:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input {
+  font-family: var(--font-body);
+  border: none;
+  outline: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Canvas Background --- */
+#weather-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- Background Overlay --- */
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+  transition: background var(--duration-slow) var(--ease-smooth);
+}
+
+/* --- App Container --- */
+.app-container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Utility: Hidden --- */
+.hidden {
+  display: none !important;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-tertiary);
+  border-radius: var(--radius-full);
+}
