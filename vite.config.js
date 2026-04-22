@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/weather-app/',
+  base: '/SkyPulse-Weather-App/',
   root: './',
   publicDir: 'public',
   build: {
